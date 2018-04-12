@@ -1,5 +1,10 @@
 package atm_Example;
 
-public class Registro {
+import java.util.LinkedList;
 
+public class Registro {
+	LinkedList<Operacion> operaciones;
+	public void añadirOperacion(Operacion op) {
+		operaciones.add(op);
+	}
 }
