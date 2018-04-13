@@ -10,28 +10,45 @@ public class Cajero {
 	double dineroDisponible;
 	String pinIngresado;
 	
-	private void menu() {
+	public void identificacion() {
 	    //El usuario ingresa tarjeta y el cajero la lee
 		Tarjeta tarjeta = leerTarjeta();
 		setTarjetaIngresada(tarjeta);
-		//Se le pide el PIN al usuario
-        //El usuario ingresa el pin
-        String pin= "1234";
-        setPinIngresado(pin);
-        //El cajero se fija de que banco es la tarjeta
-        Banco banco= tarjeta.getBanco();
-        //El cajero le pregunta al banco si la tarjeta y el pin ingresados son validos
-        if (banco.tarjetaEsValida(tarjeta, pin)){
-            //Mostrar opciones por pantalla para que el usuario acceda a los servicios del cajero
-        }
-        else{
-            //Error
+
+		int contador = 0;
+		boolean tarjetaEsValida = false;
+		while(contador < 3 & !tarjetaEsValida) {
+            //Se le pide el PIN al usuario
+            //El usuario ingresa el pin
+            String pin = "1234";
+            setPinIngresado(pin);
+            //El cajero se fija de que banco es la tarjeta
+            Banco banco = tarjeta.getBanco();
+            //El cajero busca en su base de datos interna la forma de comunicarse con dicho banco
+            //El cajero le pregunta al banco si la tarjeta y el pin ingresados son validos
+            if (banco.tarjetaEsValida(tarjeta, pin)) {
+                tarjetaEsValida = true;
+            }
+            else {
+                contador++;
+            }
         }
 
+        if(contador == 3){
+		    retenerTarjeta();
+        }
+        else if (tarjetaEsValida){
+		    //Mostrar menues para que el usuario pueda realizar transacciones
+            menu();
+        }
+
+    }
+
+    private void menu(){
 
     }
 	
-	public Tarjeta leerTarjeta(){
+	private Tarjeta leerTarjeta(){
 		Tarjeta tarjeta = new Tarjeta();
 		return tarjeta;
 	}
