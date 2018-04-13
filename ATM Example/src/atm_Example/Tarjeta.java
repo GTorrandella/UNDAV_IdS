@@ -29,7 +29,7 @@ public class Tarjeta {
 	public void listaDeCuentas() {
 		Cuenta[] cuen = (Cuenta[]) cuentas.toArray();
 		for (int x = 0; x < cuen.length; x++) {
-			System.out.println("     * "+cuen[x].getNumeroCuenta());
+			System.out.println("     "+x+" "+cuen[x].getNumeroCuenta());
 		}
 	}
 }
