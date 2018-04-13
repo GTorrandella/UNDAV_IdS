@@ -3,6 +3,10 @@ package atm_Example;
 public class Banco {
 	String idBanco;
 	
+	public Banco(String id) {
+		this.idBanco = id;
+	}
+	
 	public boolean tarjetaEsValida(Tarjeta tarjeta, String pin) {
 		return true;
 	}

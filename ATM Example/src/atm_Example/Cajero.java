@@ -9,4 +9,56 @@ public class Cajero {
 	String idCajero;
 	double dineroDisponible;
 	String pinIngresado;
+	
+	private void menu() {
+		
+	}
+	
+	public void leerTarjeta(Tarjeta tarjeta){
+		
+	}
+	
+	private void expulsarTarjeta() {
+		
+	}
+	
+	private void retenerTarjeta(){
+		
+	}
+	
+	private void menuDeposito() {
+		
+	}
+	
+	private void menuExtraccion() {
+		
+	}
+	
+	private void menuConsultaSaldo() {
+		
+	}
+	
+	private void cancelarOperación() {
+		
+	}
+	
+	private void imprimirTicket(Operacion operacion) {
+		
+	}
+	
+	public void iniciarSoftware() {
+		
+	}
+	
+	public void apagarSoftware() {
+		
+	}
+	
+	private void expenderDinero(double dinero) {
+		
+	}
+	
+	public void terminarOperaciones() {
+		
+	}
 }
