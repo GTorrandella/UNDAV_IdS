@@ -1,6 +1,7 @@
 package atm_Example;
 
 public class Banco {
+
 	String idBanco;
 	
 	public Banco(String id) {
@@ -17,5 +18,13 @@ public class Banco {
 	
 	public boolean confirmarDeposito(Tarjeta tarjeta, Cuenta cuenta) {
 		return true;
+	}
+
+	public String getIdBanco() {
+		return idBanco;
+	}
+
+	public void setIdBanco(String idBanco) {
+		this.idBanco = idBanco;
 	}
 }
