@@ -31,6 +31,7 @@ public class Cajero {
 	}
 	
 	private void menuExtraccion() {
+		System.out.println("Seleccione su cuenta:");
 		
 	}
 	
