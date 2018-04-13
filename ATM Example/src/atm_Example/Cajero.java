@@ -1,6 +1,8 @@
 package atm_Example;
 
+import java.io.InputStream;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Cajero {
 	Registro registro;
@@ -33,9 +35,19 @@ public class Cajero {
 	private void menuExtraccion() {
 		System.out.println("Seleccione su cuenta:");
 		tarjetaIngresada.listaDeCuentas();
+		System.out.print("    :");
+		
+		Scanner sc = new Scanner(System.in);
+		Cuenta cuenta = tarjetaIngresada.seleccionarCuenta(sc.nextInt());
+		double dinero = sc.nextDouble();
+		sc.close();
+		
+		if(bancos.get(1).validarOperacion(tarjetaIngresada, cuenta, 1)) {
+			
+		}
 		
 	}
-	
+
 	private void menuConsultaSaldo() {
 		
 	}

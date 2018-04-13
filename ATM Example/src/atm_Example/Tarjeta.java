@@ -27,9 +27,12 @@ public class Tarjeta {
 	}
 	
 	public void listaDeCuentas() {
-		Cuenta[] cuen = (Cuenta[]) cuentas.toArray();
-		for (int x = 0; x < cuen.length; x++) {
-			System.out.println("     "+x+" "+cuen[x].getNumeroCuenta());
+		for (int x = 0; x < cuentas.size(); x++) {
+			System.out.println("     "+x+" "+cuentas.get(x).getNumeroCuenta());
 		}
+	}
+	
+	public Cuenta seleccionarCuenta(int selec) {
+		return cuentas.get(selec);
 	}
 }
