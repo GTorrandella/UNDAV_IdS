@@ -1,6 +1,7 @@
 package atm_Example;
 
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -131,7 +132,13 @@ public class Cajero {
 	}
 	
 	public void iniciarSoftware() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Ingrese dinero disponible:");
+		this.dineroDisponible = sc.nextDouble();
+		sc.close();
 		
+		registro.aniadirOperacion(new Encendido(idCajero, "ini"+Calendar.getInstance().toString(), dineroDisponible));
+	
 	}
 	
 	public void apagarSoftware() {
