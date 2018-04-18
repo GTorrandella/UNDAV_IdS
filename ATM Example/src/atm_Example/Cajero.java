@@ -102,8 +102,25 @@ public class Cajero {
 	}
 
 	private void menuConsultaSaldo() {
+		System.out.println("Seleccione su cuenta:");
+		tarjetaIngresada.listaDeCuentas();
+		System.out.print("    :");
 		
-	}
+		Scanner sc = new Scanner(System.in);
+		String input = sc.next();
+		if (input != "X" || input != "x") {
+			Cuenta cuenta = tarjetaIngresada.seleccionarCuenta(Integer.parseInt(input));
+			if(bancos.get(1).validarOperacion(tarjetaIngresada, cuenta, 2)){
+				ConsultaSaldo consulta = new ConsultaSaldo(idCajero, cuenta.numeroCuenta, cuenta.getSaldo());
+				imprimirTicket(consulta);
+				registro.aniadirOperacion(consulta);
+				}
+			}
+		
+		sc.close();	
+		}
+		
+
 	
 	private void cancelarOperacion() {
 		
