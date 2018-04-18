@@ -40,9 +40,10 @@ public abstract class Operacion {
 		this.idOperacion = idOperacion;
 	}
 	
-	public Operacion(String idCaj, int tipoOP) {
+	public Operacion(String idCaj, int tipoOP, String idOP) {
 		this.fecha = Calendar.getInstance();
 		this.idCajero = idCaj;
 		this.tipoOperacion = tipoOP;
+		this.idOperacion = idOP;
 	}
 }

@@ -56,7 +56,7 @@ public class Transferencia extends Transaccion {
 		this.finalOriginalCuantaOrigen = finalOriginalCuantaOrigen;
 	}
 	
-	public Transferencia(String idCaj, int tipoOP, String numCuenta) {
-		super(idCaj, tipoOP, numCuenta);
+	public Transferencia(String idCaj, int tipoOP, String idOP,String numCuenta) {
+		super(idCaj, tipoOP, idOP, numCuenta);
 	}
 }

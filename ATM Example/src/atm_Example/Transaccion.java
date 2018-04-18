@@ -11,8 +11,8 @@ public abstract class Transaccion extends Operacion {
 		this.numeroCuenta = numeroCuenta;
 	}
 	
-	public Transaccion(String idCaj, int tipoOP, String numCuenta) {
-		super(idCaj, tipoOP);
+	public Transaccion(String idCaj, int tipoOP, String idOP, String numCuenta) {
+		super(idCaj, tipoOP, idOP);
 		this.numeroCuenta = numCuenta;
 	}
 }
