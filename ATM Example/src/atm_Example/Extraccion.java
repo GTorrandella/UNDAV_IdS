@@ -29,8 +29,8 @@ public class Extraccion extends Transaccion {
 		this.balanceFinal = balanceFinal;
 	}
 	
-	public Extraccion(String idCaj, String numCuenta, double cantDiEx, double balOr, double balFn) {
-		super(idCaj, 1, numCuenta);
+	public Extraccion(String idCaj, String tipoOP, String numCuenta, double cantDiEx, double balOr, double balFn) {
+		super(idCaj, 1, tipoOP,numCuenta);
 		this.cantidadDineroExtraido = cantDiEx;
 		this.balanceOriginal = balOr;
 		this.balanceFinal = balFn;

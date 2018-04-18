@@ -90,7 +90,7 @@ public class Cajero {
 			if (input != "X" || input != "x") {
 				double dinero = Double.parseDouble(input);
 				if(bancos.get(1).validarOperacion(tarjetaIngresada, cuenta, 1) && cuenta.getSaldo() - dinero >= 0) {
-					Extraccion extrac = new Extraccion(idCajero, cuenta.numeroCuenta, dinero, cuenta.getSaldo(), cuenta.getSaldo() - dinero);
+					Extraccion extrac = new Extraccion(idCajero, "ext"+Calendar.getInstance().toString(), cuenta.numeroCuenta, dinero, cuenta.getSaldo(), cuenta.getSaldo() - dinero);
 					imprimirTicket(extrac);
 					cuenta.restarSaldo(dinero);
 					expenderDinero(dinero);
@@ -112,7 +112,7 @@ public class Cajero {
 		if (input != "X" || input != "x") {
 			Cuenta cuenta = tarjetaIngresada.seleccionarCuenta(Integer.parseInt(input));
 			if(bancos.get(1).validarOperacion(tarjetaIngresada, cuenta, 2)){
-				ConsultaSaldo consulta = new ConsultaSaldo(idCajero, cuenta.numeroCuenta, cuenta.getSaldo());
+				ConsultaSaldo consulta = new ConsultaSaldo(idCajero, "CS"+Calendar.getInstance().toString(),cuenta.numeroCuenta, cuenta.getSaldo());
 				imprimirTicket(consulta);
 				registro.aniadirOperacion(consulta);
 				}
