@@ -1,8 +1,8 @@
 package HealthWatcher;
 
 public class Citizen {
-	String Name;
-	Location Address;
-	String Tel;
-	String Email;
+	private String Name; //Optional (Mandatory if FoodComplaint victim)
+	private Location Address; //Optional
+	private String TelephoneNumber; //Optional
+	private String Email; //Optional
 }

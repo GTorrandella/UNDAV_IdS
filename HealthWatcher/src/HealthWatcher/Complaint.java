@@ -3,8 +3,9 @@ package HealthWatcher;
 import java.util.Calendar;
 
 public abstract class Complaint {
-	String Description;
-	String Observation;
-	Citizen Complainer;
-	Calendar Date;
+	private String Description; //Mandatory
+	private String Observation; //Optional
+	private Citizen Complainer; //Optional
+	private State state; //Mandatory
+	private Calendar RegistrationDate; //Mandatory
 }

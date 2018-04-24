@@ -1,11 +1,11 @@
 package HealthWatcher;
 
 public class FoodComplaint extends Complaint {
-	Citizen Victim;
-	int AmountEat;
-	int AmountSick;
-	int AmountHops;
-	int AmountDead;
-	Location Hospital;
-	Location SuspMealPlace;
+	private Citizen Victim; //Mandatory
+	private int AmountEat; //Mandatory
+	private int AmountSick; //Mandatory
+	private int AmountHospitalized; //Mandatory
+	private int AmountDead; //Mandatory
+	private Location Hospital; //Optional
+	private Location SuspMealPlace; //Optional
 }

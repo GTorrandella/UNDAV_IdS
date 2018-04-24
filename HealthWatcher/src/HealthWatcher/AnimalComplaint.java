@@ -3,8 +3,8 @@ package HealthWatcher;
 import java.util.Calendar;
 
 public class AnimalComplaint extends Complaint {
-	String AnimalType;
-	int Amount;
-	Calendar Date;
-	Location Location;
+	private String AnimalType; //Mandatory
+	private int Amount; //Mandatory
+	private Calendar Date; //Mandatory
+	private Location Location; //Optional
 }
