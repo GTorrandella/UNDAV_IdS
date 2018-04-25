@@ -5,7 +5,7 @@ import java.util.Calendar;
 public class AnimalComplaint extends Complaint {
 	private String AnimalType; //Mandatory
 	private int Amount; //Mandatory
-	private Calendar Date; //Mandatory
+	private String Date; //Mandatory
 	private Location Location; //Optional
 	
 	public AnimalComplaint (Citizen complainer){
@@ -28,11 +28,11 @@ public class AnimalComplaint extends Complaint {
 		Amount = amount;
 	}
 
-	public Calendar getDate() {
+	public String getDate() {
 		return Date;
 	}
 
-	public void setDate(Calendar date) {
+	public void setDate(String date) {
 		Date = date;
 	}
 
