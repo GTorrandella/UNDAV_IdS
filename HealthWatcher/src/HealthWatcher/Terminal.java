@@ -26,7 +26,10 @@ public class Terminal {
     }
 
     public void foodComplaintMenu(){
-
+        FoodComplaint complaint = new FoodComplaint();
+        Citizen citizen = new Citizen();
+        //Se le piden los datos al usuario y se guardan
+        //Se agrega la denuncia a la base de datos
     }
 
     public void specialComplaintMenu(){
