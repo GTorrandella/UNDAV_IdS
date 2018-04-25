@@ -1,8 +1,5 @@
 package HealthWatcher;
 
-import java.io.InputStream;
-import java.util.Calendar;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 
@@ -87,28 +84,23 @@ public class Terminal {
     }
     
     private void animalComplaintMenu(){
-    	Citizen citizen = dataCitizen();
-    	AnimalComplaint animalComplaint = new AnimalComplaint(citizen);
+    	AnimalComplaint animalComplaint = new AnimalComplaint(dataCitizen());
     	Scanner sc = new Scanner(System.in);
     	
     	System.out.println("Enter complaint data");
     	animalComplaint.setDescription(sc.next()); 
     	
     	System.out.println("Enter observations");
-    	String observations = sc.next();
-    	animalComplaint.setObservation(observations);
+    	animalComplaint.setObservation(sc.next());
     	
     	System.out.println("Enter animal type");
-    	String animalType = sc.next();
-    	animalComplaint.setAnimalType(animalType);
+    	animalComplaint.setAnimalType(sc.next());
     	
     	System.out.println("Enter amount of animals");
-    	int amountOfAnimals = sc.nextInt();
-    	animalComplaint.setAmount(amountOfAnimals);
+    	animalComplaint.setAmount(sc.nextInt());
     	
     	System.out.println("Enter date problem was observed");
-    	String dateProblemWasObserved = sc.next();
-    	animalComplaint.setDate(dateProblemWasObserved);
+    	animalComplaint.setDate(sc.next());
     	
     	System.out.println("Enter where the problem happend");
     	animalComplaint.setLocation(createLocation());
@@ -120,16 +112,57 @@ public class Terminal {
     	
     	sc.close();
 
+    	database.addComplaint(animalComplaint);
     }
 
-    public void foodComplaintMenu(){
-        FoodComplaint foodComplaint = new FoodComplaint();
-        Citizen citizen = new Citizen();
-        //Se le piden los datos al usuario y se guardan
-        //Se agrega la denuncia a la base de datos
+    private void foodComplaintMenu(){
+        FoodComplaint foodComplaint = new FoodComplaint(dataCitizen());
+    	Scanner sc = new Scanner(System.in);
+
+    	System.out.println("Enter information for any of the victims");
+    	foodComplaint.setVictim(dataCitizen());
+    	
+    	System.out.println("Enter how many people ate");
+    	foodComplaint.setAmountEat(sc.nextInt());
+    	
+    	System.out.println("Of those, how many became sick?");
+    	foodComplaint.setAmountSick(sc.nextInt());
+
+    	System.out.println("How many where hospitalized?");
+    	foodComplaint.setAmountHospitalized(sc.nextInt());
+
+    	System.out.println("How many died?");
+    	foodComplaint.setAmountDead(sc.nextInt());
+    	
+        System.out.println("Enter where the people where hospitalized");
+    	foodComplaint.setHospital(createLocation());
+    	
+    	System.out.println("Enter where the people ate the food");
+    	foodComplaint.setSuspMealPlace(createLocation());
+    	
+    	sc.close();
+
+    	database.addComplaint(foodComplaint);
     }
 
-    public void specialComplaintMenu(){
+    private void specialComplaintMenu(){
+        SpecialComplaint specialComplaint = new SpecialComplaint(dataCitizen());
+    	Scanner sc = new Scanner(System.in);
 
+    	System.out.println("Enter your age");
+    	specialComplaint.setAge(sc.nextShort());
+
+    	System.out.println("Enter yours qualifications");
+    	specialComplaint.setQualification(sc.next());
+
+    	System.out.println("Enter your occupation");
+    	specialComplaint.setOccupation(sc.next());
+    	
+    	System.out.println("Where the problem happened");
+    	specialComplaint.setLocation(createLocation());
+    	
+    	sc.close();
+
+    	database.addComplaint(specialComplaint);
     }
 }

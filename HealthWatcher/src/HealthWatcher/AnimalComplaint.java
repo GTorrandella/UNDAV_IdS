@@ -1,7 +1,5 @@
 package HealthWatcher;
 
-import java.util.Calendar;
-
 public class AnimalComplaint extends Complaint {
 	private String AnimalType; //Mandatory
 	private int Amount; //Mandatory
