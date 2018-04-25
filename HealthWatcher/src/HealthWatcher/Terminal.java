@@ -50,6 +50,8 @@ public class Terminal {
     	String telephoneNumber = sc.next();
     	System.out.println("Enter email");
     	String email = sc.next();
+    	System.out.println("type of animal");
+    	String typeOfAnimal = sc.next();
     	
     	sc.close();
 
