@@ -1,5 +1,10 @@
 package HealthWatcher;
 
+import java.io.InputStream;
+import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.Scanner;
+
 public class Terminal {
 
     public void mainMenu(){
@@ -22,6 +27,31 @@ public class Terminal {
     }
 
     public void animalComplaintMenu(){
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("Enter complaint data");
+    	String complainData = sc.next();
+    	System.out.println("Enter observations");
+    	String observations = sc.next();
+    	System.out.println("Enter name");
+    	String name = sc.next();
+    	System.out.println("Enter street");
+    	String street = sc.next();
+    	System.out.println("Enter complement");
+    	String complement = sc.next();
+    	System.out.println("Enter district");
+    	String district = sc.next();
+    	System.out.println("Enter city");
+    	String city = sc.next();
+    	System.out.println("Enter state");
+    	String state = sc.next();
+    	System.out.println("Enter zip code");
+    	String zipCode = sc.next();
+    	System.out.println("Enter telephone number");
+    	String telephoneNumber = sc.next();
+    	System.out.println("Enter email");
+    	String email = sc.next();
+    	
+    	sc.close();
 
     }
 
