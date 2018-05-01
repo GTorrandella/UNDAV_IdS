@@ -1,12 +1,12 @@
 package HealthWatcher;
 
 public class Location {
-	private String Street; //Optional
-	private String Complement; //Optional
-	private String District; //Optional
-	private String City; //Optional
-	private String State; //Optional
-	private String ZIPCode; //Optional
+	private String Street; 			//Optional
+	private String Complement;  	//Optional
+	private String District;    	//Optional
+	private String City; 			//Optional
+	private String State; 			//Optional
+	private String ZIPCode; 		//Optional
 	private String TelephoneNumber; //Optional
 	
 	
@@ -53,5 +53,10 @@ public class Location {
 		TelephoneNumber = telephoneNumber;
 	}
 	
-	
+	public void showInformation() {
+		System.out.println("\t"+Street+" "+Complement+", "+District+" "+ZIPCode+" "+", "+City+", "+State);
+		if(TelephoneNumber != "") {
+			System.out.println("\tTel: "+TelephoneNumber);
+		}
+	}
 }
