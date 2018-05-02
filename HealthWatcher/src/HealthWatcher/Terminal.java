@@ -121,14 +121,12 @@ public class Terminal {
     	System.out.println("Enter where the problem happend");
     	animalComplaint.setLocation(createLocation());
     	
-    	animalComplaint.setState(State.OPENED);;
+    	animalComplaint.setState(State.OPENED);
     	database.addComplaint(animalComplaint);
     	
     	System.out.println("Your complaint number is: " + animalComplaint.getComplaintID());
     	
     	sc.close();
-
-    	database.addComplaint(animalComplaint);
     }
 
     private void foodComplaintMenu(){
@@ -156,9 +154,12 @@ public class Terminal {
     	System.out.println("Enter where the people ate the food");
     	foodComplaint.setSuspMealPlace(createLocation());
     	
-    	sc.close();
-
+    	foodComplaint.setState(State.OPENED);
     	database.addComplaint(foodComplaint);
+    	
+    	System.out.println("Your complaint number is: " + foodComplaint.getComplaintID());
+    	
+    	sc.close();
     }
 
     private void specialComplaintMenu(){
@@ -177,9 +178,12 @@ public class Terminal {
     	System.out.println("Where the problem happened");
     	specialComplaint.setLocation(createLocation());
     	
-    	sc.close();
-
+    	specialComplaint.setState(State.OPENED);
     	database.addComplaint(specialComplaint);
+    	
+    	System.out.println("Your complaint number is: " + specialComplaint.getComplaintID());
+    	
+    	sc.close();
     }
     
     private void makeQueryMenu() {
