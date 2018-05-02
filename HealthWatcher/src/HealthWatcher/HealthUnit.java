@@ -13,6 +13,10 @@ public class HealthUnit {
 	private HashMap<String,Specialty> specialties;
 	private ArrayList <Employee> employees;
 	
+	public String getName() {
+		return name;
+	}
+	
 	public void addEmployee(Employee e) {
 		this.employees.add(e);
 	}
@@ -27,9 +31,13 @@ public class HealthUnit {
 		this.name = name;
 	}
 	
-	public void showInformation() {
+	public void showMinimumInformation() {
 		System.out.println("\t\t"+name);
 		System.out.println("\nAdress:");
+	}
+	
+	public void showAllInformation() {
+		showMinimumInformation();
 		adress.showInformation();
 		showSpecialtiesInformation();
 		showEmployeesInformation();
@@ -42,6 +50,10 @@ public class HealthUnit {
 			Specialty specialtyToShow = s.getValue();
 			specialtyToShow.showInformation();
 		}
+	}
+	
+	public Boolean hasSpecialty(String specialtyToLook) {
+		return specialties.containsKey(specialtyToLook);
 	}
 	
 	private void showEmployeesInformation() {

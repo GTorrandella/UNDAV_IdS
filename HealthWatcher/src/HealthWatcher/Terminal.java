@@ -1,5 +1,7 @@
 package HealthWatcher;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 
@@ -7,24 +9,38 @@ public class Terminal {
 	Database database;
 
     public void mainMenu(){
-        //Citizen selects the kind of complaint
-        int complaint = 0;
-        switch (complaint) {
+    	Scanner sc = new Scanner(System.in);
+        switch (sc.nextInt()) {
             case 1:
-                animalComplaintMenu();
-                break;
+            	makeComplaint();
             case 2:
-                foodComplaintMenu();
-                break;
-            case 3:
-                specialComplaintMenu();
-                break;
+            	makeQueryMenu();
+            	break;
+            case 9:
+            	employeesMenu();
             default:
                 break;
         }
-
+        sc.close();
     }
-
+    
+    private void makeComplaint() {
+        //Citizen selects the kind of complaint
+    	Scanner sc = new Scanner(System.in);
+        switch (sc.nextInt()) {
+    	case 1:
+	        animalComplaintMenu();
+	        break;
+	    case 2:
+	        foodComplaintMenu();
+	        break;
+	    case 3:
+	        specialComplaintMenu();
+	        break;
+    	}
+    	sc.close();
+    }
+    
     private Citizen dataCitizen() {
     	Citizen citizen = new Citizen();
     	
@@ -164,5 +180,184 @@ public class Terminal {
     	sc.close();
 
     	database.addComplaint(specialComplaint);
+    }
+    
+    private void makeQueryMenu() {
+    	System.out.println("What do you want to search?");
+    	System.out.println("\t1: Which health units take care of a specific specialty.");
+    	System.out.println("\t2: What are the specialties of a particular health unit.");
+    	Scanner sc = new Scanner(System.in);
+    	
+    	switch (sc.nextInt()) {
+    	case 1:
+    		searchBySpecialty();
+    		break;
+    	case 2:
+    		searchByHeatlUnit();
+    		break;
+    	default:
+    		break;
+    	}
+    	
+    	sc.close();
+    }
+    
+    private void searchBySpecialty() {	
+    	Scanner sc = new Scanner(System.in);
+    	
+    	System.out.println("\n\nType Specialty to search: ");
+    	String specialtyToLook = sc.next();
+    	ArrayList<HealthUnit> hUnits = database.searchHealthUnitBySpecialty(specialtyToLook);
+    	Iterator<HealthUnit> i = hUnits.iterator();
+    	
+    	if (!i.hasNext()) {
+    		System.out.println("\nNo health unit was found that treated "+specialtyToLook);
+    	}
+    	
+    	else {
+    		System.out.println("\nThe next health units treat "+specialtyToLook);
+    		while(i.hasNext()) {
+    			i.next().showMinimumInformation();
+    		}
+    	}
+    	
+    	sc.close();
+    }
+    
+    private void searchByHeatlUnit() {
+    	Scanner sc = new Scanner(System.in);
+    	
+    	System.out.println("\n\nType the name of the health unit to search: ");
+    	String huToLook = sc.next();
+    	HealthUnit hUnits = database.searchHealtUnitByName(huToLook);
+    	
+    	if (hUnits == null) {
+    		System.out.println("\nNo health unit was found with this name: "+huToLook);
+    	}
+    	
+    	else {
+    		System.out.println("\nThe next health units treat "+huToLook);
+    		hUnits.showMinimumInformation();
+    	}
+    	
+    	sc.close();
+    }
+    
+    private void employeesMenu() {
+    	System.out.println("Employees Menu");
+    	System.out.println("\t1: Login.");
+    	System.out.println("\t2: Add Employee.");
+    	System.out.println("\t3: Modify Employee.");
+    	System.out.println("\t4: Delete Employee.");
+    	Scanner sc = new Scanner(System.in);
+    	
+    	switch (sc.nextInt()) {
+    	case 1:
+    		loginEmployee();
+    		break;
+    	case 2:
+    		addEmployee();
+    		break;
+    	case 3:
+    		modifyEmployee();
+    		break;
+    	case 4:
+    		deleteEmployee();
+    		break;
+    	default:
+    		break;
+    	}
+    	
+    	sc.close();
+    }
+    
+    private void loginEmployee() {
+    	Scanner sc = new Scanner(System.in);
+    	String name, surname, password;
+
+    	System.out.print("\nEnter your firt name: ");
+    	name = sc.next();
+    	
+    	System.out.print("\n\nEnter your last name: ");
+    	surname = sc.next();
+    	
+    	System.out.println("\n\nEnter your password:");
+    	password = sc.next();
+    	
+    	if (database.verifyEmployee(name, surname, password)) {
+    		System.out.println("Access autorized");
+    	}
+    	
+    	else System.out.println("Access denied");
+    	
+    	sc.close();
+    }
+    
+    private void addEmployee() {
+    	Scanner sc = new Scanner(System.in);
+    	String name, surname, password;
+
+    	System.out.print("\nEnter your firt name: ");
+    	name = sc.next();
+    	
+    	System.out.print("\n\nEnter your last name: ");
+    	surname = sc.next();
+    	
+    	System.out.println("\n\nEnter your password:");
+    	password = sc.next();
+    	
+    	database.addEmployee(name, surname, password);
+    	System.out.println("Employee added to database");
+    	
+    	sc.close();
+    }   
+    
+    private void modifyEmployee() {
+    	Scanner sc = new Scanner(System.in);
+    	String name, surname, password;
+
+    	System.out.print("\nEnter your firt name: ");
+    	name = sc.next();
+    	
+    	System.out.print("\n\nEnter your last name: ");
+    	surname = sc.next();
+    	
+    	System.out.println("\n\nEnter your password:");
+    	password = sc.next();
+    	
+    	if (database.verifyEmployee(name, surname, password))  {
+    		String newPass1 = "faf", newPass2 = "afa";
+    		while (newPass1 != newPass2) {
+    			System.out.println("\n\nEnter your new password:");
+    	    	newPass1 = sc.next();
+
+    			System.out.println("\n\nEnter your new password again:");
+    	    	newPass2 = sc.next();
+    		}
+    		database.modifyEmployeePassword(name, surname, password, newPass1);
+    	}
+    	else System.out.println("Employee not found");
+    	sc.close();
+    	
+    }
+    
+    private void deleteEmployee() {
+    	Scanner sc = new Scanner(System.in);
+    	String name, surname, password;
+
+    	System.out.print("\nEnter your firt name: ");
+    	name = sc.next();
+    	
+    	System.out.print("\n\nEnter your last name: ");
+    	surname = sc.next();
+    	
+    	System.out.println("\n\nEnter your password:");
+    	password = sc.next();
+    	
+    	database.deleteEmployee(name, surname, password);
+    	System.out.println("Employee deleted");
+    	
+    	sc.close();
+    	
     }
 }
