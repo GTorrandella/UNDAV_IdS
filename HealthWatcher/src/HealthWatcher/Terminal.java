@@ -228,6 +228,7 @@ public class Terminal {
     }
     
     private void specialtyInformationQuery(){
+    	System.out.println("What do you want to search?");
     	
     }
     
