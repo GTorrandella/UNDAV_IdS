@@ -63,4 +63,15 @@ public class HealthUnit {
 			e.showInformation();
 		}
 	}
+	
+	public ArrayList<String> getSpecialtiesNames(){
+		ArrayList<String> specialtiesNames = null;
+		
+		Iterator i = specialties.keySet().iterator();
+		while(i.hasNext()) {
+			specialtiesNames.add((String)i.next());
+		}
+		
+		return specialtiesNames;
+	}
 }

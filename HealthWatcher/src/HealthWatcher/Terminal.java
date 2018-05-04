@@ -189,7 +189,8 @@ public class Terminal {
     private void makeQueryMenu() {
     	System.out.println("What do you want to search?");
     	System.out.println("\t1: Health Guide");
-    	System.out.println("\t2: Specialy Information");
+    	System.out.println("\t2: Disease Information");
+    	System.out.println("\t3: Complaint Information");
     	Scanner sc = new Scanner(System.in);
     	
     	switch (sc.nextInt()) {
@@ -197,7 +198,10 @@ public class Terminal {
     		healthGuideQuery();
     		break;
     	case 2:
-    		specialtyInformationQuery();
+    		diseaseInformationQuery();
+    		break;
+    	case 3:
+    		complaintInformationQuery();
     		break;
     	default:
     		break;
@@ -227,7 +231,11 @@ public class Terminal {
     	
     }
     
-    private void specialtyInformationQuery(){
+    private void diseaseInformationQuery() {
+    	
+    }
+    
+    private void complaintInformationQuery() {
     	
     }
     
