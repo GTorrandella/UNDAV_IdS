@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 
 public class Terminal {
-	Database database;
+	private Database database;
+	private String employee;
 
     public void mainMenu(){
     	Scanner sc = new Scanner(System.in);
@@ -286,43 +287,48 @@ public class Terminal {
     	System.out.println("\t2: Add Employee.");
     	System.out.println("\t3: Modify Employee.");
     	System.out.println("\t4: Delete Employee.");
+    	System.out.println("\t5: Logout.");
     	Scanner sc = new Scanner(System.in);
     	
-    	switch (sc.nextInt()) {
-    	case 1:
-    		loginEmployee();
-    		break;
-    	case 2:
-    		addEmployee();
-    		break;
-    	case 3:
-    		modifyEmployee();
-    		break;
-    	case 4:
-    		deleteEmployee();
-    		break;
-    	default:
-    		break;
+    	switch (sc.nextInt()){
+			case 1:
+				loginEmployee();
+				break;
+			case 2:
+				addEmployee();
+				break;
+			case 3:
+				modifyEmployee("damian", "damis", "dami123");
+				break;
+			case 4:
+				deleteEmployee();
+				break;
+			case 5:
+				logout();
+				break;
+			default:
+				break;
     	}
     	
     	sc.close();
     }
-    
-    private void loginEmployee() {
-    	Scanner sc = new Scanner(System.in);
-    	String name, surname, password;
 
-    	System.out.print("\nEnter your firt name: ");
+	private void loginEmployee() {
+    	Scanner sc = new Scanner(System.in);
+    	String name, loginID, password;
+
+    	System.out.print("\nEnter your name: ");
     	name = sc.next();
     	
-    	System.out.print("\n\nEnter your last name: ");
-    	surname = sc.next();
+    	System.out.print("\n\nEnter your login ID: ");
+    	loginID = sc.next();
     	
     	System.out.println("\n\nEnter your password:");
     	password = sc.next();
     	
-    	if (database.verifyEmployee(name, surname, password)) {
+    	if (database.verifyEmployee(name, loginID, password)) {
     		System.out.println("Access autorized");
+    		this.employee= name;
     	}
     	
     	else System.out.println("Access denied");
@@ -332,38 +338,47 @@ public class Terminal {
     
     private void addEmployee() {
     	Scanner sc = new Scanner(System.in);
-    	String name, surname, password;
+    	String name, loginID;
 
-    	System.out.print("\nEnter your firt name: ");
+    	System.out.print("\nEnter your name: ");
     	name = sc.next();
     	
-    	System.out.print("\n\nEnter your last name: ");
-    	surname = sc.next();
+    	System.out.print("\n\nEnter your login ID: ");
+    	loginID = sc.next();
     	
-    	System.out.println("\n\nEnter your password:");
-    	password = sc.next();
+    	String pass1 = "faf", pass2 = "afa";
+		while (pass1 != pass2) {
+			System.out.println("\n\nEnter your password:");
+	    	pass1 = sc.next();
+
+			System.out.println("\n\nEnter your password again:");
+	    	pass2 = sc.next();
+	    	}
     	
-    	database.addEmployee(name, surname, password);
-    	System.out.println("Employee added to database");
+		if(database.verifyEmployee(name, loginID, pass1)){
+			System.out.println("Employee already exists");
+		}
+		else{
+			database.addEmployee(name, loginID, pass1);
+			System.out.println("Employee added to database");
+		}
+    	
     	
     	sc.close();
     }   
     
-    private void modifyEmployee() {
+    private void modifyEmployee(String name, String loginID, String password) {
     	Scanner sc = new Scanner(System.in);
-    	String name, surname, password;
-
-    	System.out.print("\nEnter your firt name: ");
-    	name = sc.next();
-    	
-    	System.out.print("\n\nEnter your last name: ");
-    	surname = sc.next();
     	
     	System.out.println("\n\nEnter your password:");
     	password = sc.next();
     	
-    	if (database.verifyEmployee(name, surname, password))  {
-    		String newPass1 = "faf", newPass2 = "afa";
+    	if (database.verifyEmployee(name, loginID, password))  {
+    		String newPass1 = "faf", newPass2 = "afa", newName;
+    		
+    		System.out.print("\nEnter your name: ");
+        	newName = sc.next();
+    		
     		while (newPass1 != newPass2) {
     			System.out.println("\n\nEnter your new password:");
     	    	newPass1 = sc.next();
@@ -371,7 +386,7 @@ public class Terminal {
     			System.out.println("\n\nEnter your new password again:");
     	    	newPass2 = sc.next();
     		}
-    		database.modifyEmployeePassword(name, surname, password, newPass1);
+    		database.modifyEmployee(name, loginID, password, newPass1, newName);
     	}
     	else System.out.println("Employee not found");
     	sc.close();
@@ -380,21 +395,25 @@ public class Terminal {
     
     private void deleteEmployee() {
     	Scanner sc = new Scanner(System.in);
-    	String name, surname, password;
+    	String name, loginID, password;
 
     	System.out.print("\nEnter your firt name: ");
     	name = sc.next();
     	
-    	System.out.print("\n\nEnter your last name: ");
-    	surname = sc.next();
+    	System.out.print("\n\nEnter your login ID: ");
+    	loginID = sc.next();
     	
     	System.out.println("\n\nEnter your password:");
     	password = sc.next();
     	
-    	database.deleteEmployee(name, surname, password);
+    	database.deleteEmployee(name, loginID, password);
     	System.out.println("Employee deleted");
     	
     	sc.close();
     	
     }
+
+	private void logout(){
+    	this.employee= "";
+	}
 }
