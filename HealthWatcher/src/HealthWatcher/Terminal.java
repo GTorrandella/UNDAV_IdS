@@ -443,4 +443,51 @@ public class Terminal {
 	private void logout(){
     	this.employee= "";
 	}
+/*	
+	private String showAllOptions(ArrayList<String> options) {
+		String option = "-";
+		int step = 0;
+		boolean selected = true;
+
+		Scanner sc = new Scanner(System.in);
+		
+		while(!selected) {
+			for (int x = 0; x < 9 && step+x < options.size(); x++) {
+				System.out.println("  * "+x+": "+options.get(step+x));
+			}
+
+			System.out.println("a: Avanzar");
+
+			if (step != 0) System.out.println("r: Retroceder");
+			
+			option = sc.next();
+			
+			switch(option) {
+			case "a":
+				step = step+9;
+				break;
+			case "r":
+				step = step-9;
+			case "1":
+			case "2":
+			case "3":
+			case "4":
+			case "5":
+			case "6":
+			case "7":
+			case "8":
+			case "9":
+				option
+
+			}
+			
+			System.out.print("Select an option: ");
+			
+		}
+		
+		sc.close();
+		
+		return option;
+	}
+	*/
 }
