@@ -32,8 +32,8 @@ public class Database {
     	return pass.get(name+password+loginID);
     }
     
-    public void modifyEmployeePassword(String name, String loginID, String password, String newPassword) {
-    	pass.put(name+newPassword+loginID, pass.get(name+password+loginID));
+    public void modifyEmployee(String name, String loginID, String password, String newPassword, String newName) {
+    	pass.put(newName+newPassword+loginID, pass.get(name+password+loginID));
     	pass.remove(name+password+loginID);
     }
     

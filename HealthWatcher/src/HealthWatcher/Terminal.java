@@ -290,7 +290,7 @@ public class Terminal {
 				addEmployee();
 				break;
 			case 3:
-				modifyEmployee();
+				modifyEmployee("damian", "damikapo", "dami123");
 				break;
 			case 4:
 				deleteEmployee();
@@ -359,21 +359,18 @@ public class Terminal {
     	sc.close();
     }   
     
-    private void modifyEmployee() {
+    private void modifyEmployee(String name, String loginID, String password) {
     	Scanner sc = new Scanner(System.in);
-    	String name, loginID, password;
-
-    	System.out.print("\nEnter your name: ");
-    	name = sc.next();
-    	
-    	System.out.print("\n\nEnter your loginID: ");
-    	loginID = sc.next();
     	
     	System.out.println("\n\nEnter your password:");
     	password = sc.next();
     	
     	if (database.verifyEmployee(name, loginID, password))  {
-    		String newPass1 = "faf", newPass2 = "afa";
+    		String newPass1 = "faf", newPass2 = "afa", newName;
+    		
+    		System.out.print("\nEnter your name: ");
+        	newName = sc.next();
+    		
     		while (newPass1 != newPass2) {
     			System.out.println("\n\nEnter your new password:");
     	    	newPass1 = sc.next();
@@ -381,7 +378,7 @@ public class Terminal {
     			System.out.println("\n\nEnter your new password again:");
     	    	newPass2 = sc.next();
     		}
-    		database.modifyEmployeePassword(name, loginID, password, newPass1);
+    		database.modifyEmployee(name, loginID, password, newPass1, newName);
     	}
     	else System.out.println("Employee not found");
     	sc.close();
