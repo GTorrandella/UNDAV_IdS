@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 
 public class Terminal {
-	Database database;
+	private Database database;
+	private String employee;
 
     public void mainMenu(){
     	Scanner sc = new Scanner(System.in);
@@ -278,29 +279,33 @@ public class Terminal {
     	System.out.println("\t2: Add Employee.");
     	System.out.println("\t3: Modify Employee.");
     	System.out.println("\t4: Delete Employee.");
+    	System.out.println("\t5: Logout.");
     	Scanner sc = new Scanner(System.in);
     	
-    	switch (sc.nextInt()) {
-    	case 1:
-    		loginEmployee();
-    		break;
-    	case 2:
-    		addEmployee();
-    		break;
-    	case 3:
-    		modifyEmployee();
-    		break;
-    	case 4:
-    		deleteEmployee();
-    		break;
-    	default:
-    		break;
+    	switch (sc.nextInt()){
+			case 1:
+				loginEmployee();
+				break;
+			case 2:
+				addEmployee();
+				break;
+			case 3:
+				modifyEmployee();
+				break;
+			case 4:
+				deleteEmployee();
+				break;
+			case 5:
+				logout();
+				break;
+			default:
+				break;
     	}
     	
     	sc.close();
     }
-    
-    private void loginEmployee() {
+
+	private void loginEmployee() {
     	Scanner sc = new Scanner(System.in);
     	String name, surname, password;
 
@@ -315,6 +320,7 @@ public class Terminal {
     	
     	if (database.verifyEmployee(name, surname, password)) {
     		System.out.println("Access autorized");
+    		this.employee= name;
     	}
     	
     	else System.out.println("Access denied");
@@ -389,4 +395,8 @@ public class Terminal {
     	sc.close();
     	
     }
+
+	private void logout(){
+    	this.employee= "";
+	}
 }
