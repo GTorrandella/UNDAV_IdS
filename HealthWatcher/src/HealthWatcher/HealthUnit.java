@@ -10,8 +10,8 @@ public class HealthUnit {
 	private int idHealthUnit;
 	private Location adress;
 	private String name;
-	private HashMap<String,Specialty> specialties;
-	private ArrayList <Employee> employees;
+	private HashMap<String,Specialty> specialties = new HashMap<String,Specialty>();
+	private ArrayList<Employee> employees = new ArrayList<Employee>();
 	
 	public String getName() {
 		return name;

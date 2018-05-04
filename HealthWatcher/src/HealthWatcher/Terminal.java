@@ -10,23 +10,34 @@ public class Terminal {
 	private String employee;
 
     public void mainMenu(){
+    	System.out.println("Select:");
+    	System.out.println("\t1: Make compliant");
+    	System.out.println("\t2: Make querry");
+    	System.out.println("\t9: Employees menu");
     	Scanner sc = new Scanner(System.in);
-        switch (sc.nextInt()) {
-            case 1:
-            	makeComplaint();
-            case 2:
-            	makeQueryMenu();
-            	break;
-            case 9:
-            	employeesMenu();
-            default:
-                break;
-        }
-        sc.close();
+    	
+	    while (true) {
+	        switch (sc.nextInt()) {
+	            case 1:
+	            	makeComplaint();
+	            case 2:
+	            	makeQueryMenu();
+	            	break;
+	            case 9:
+	            	employeesMenu();
+	            default:
+	                break;
+	        }
+    	}
     }
+   
     
     private void makeComplaint() {
         //Citizen selects the kind of complaint
+    	System.out.println("Complaint about?");
+    	System.out.println("\t1: Animals");
+    	System.out.println("\t2: Food");
+    	System.out.println("\t3: Others");
     	Scanner sc = new Scanner(System.in);
         switch (sc.nextInt()) {
     	case 1:
@@ -61,7 +72,6 @@ public class Terminal {
     	String email = sc.next();
     	citizen.setEmail(email);
     	
-    	sc.close();
     	
     	return citizen;
     }
@@ -95,7 +105,6 @@ public class Terminal {
     	String zipCode = sc.next();
     	location.setZIPCode(zipCode);
     	
-    	sc.close();
     	
     	return location;
     }
@@ -127,7 +136,6 @@ public class Terminal {
     	
     	System.out.println("Your complaint number is: " + animalComplaint.getComplaintID());
     	
-    	sc.close();
     }
 
     private void foodComplaintMenu(){
@@ -160,7 +168,6 @@ public class Terminal {
     	
     	System.out.println("Your complaint number is: " + foodComplaint.getComplaintID());
     	
-    	sc.close();
     }
 
     private void specialComplaintMenu(){
@@ -184,7 +191,6 @@ public class Terminal {
     	
     	System.out.println("Your complaint number is: " + specialComplaint.getComplaintID());
     	
-    	sc.close();
     }
     
     private void makeQueryMenu() {
@@ -208,7 +214,6 @@ public class Terminal {
     		break;
     	}
     	
-    	sc.close();
     }
     
     private void healthGuideQuery(){
@@ -227,9 +232,6 @@ public class Terminal {
     	default:
     		break;
     	}
-    	
-    	sc.close();
-    	
     }
     
     private void diseaseInformationQuery() {
@@ -246,7 +248,6 @@ public class Terminal {
     	
     	else System.out.print("Disease not found");
     	
-    	sc.close();
     }
     
     private void complaintInformationQuery() {
@@ -262,8 +263,6 @@ public class Terminal {
     	}
     	
     	else System.out.print("Complaint not found");
-    	
-    	sc.close();
     	
     }
     
@@ -286,7 +285,6 @@ public class Terminal {
     		}
     	}
     	
-    	sc.close();
     }
     
     private void searchByHeatlUnit() {
@@ -305,7 +303,6 @@ public class Terminal {
     		hUnits.showMinimumInformation();
     	}
     	
-    	sc.close();
     }
     
     private void employeesMenu() {
@@ -336,8 +333,6 @@ public class Terminal {
 			default:
 				break;
     	}
-    	
-    	sc.close();
     }
 
 	private void loginEmployee() {
@@ -359,8 +354,6 @@ public class Terminal {
     	}
     	
     	else System.out.println("Access denied");
-    	
-    	sc.close();
     }
     
     private void addEmployee() {
@@ -389,9 +382,6 @@ public class Terminal {
 			database.addEmployee(name, loginID, pass1);
 			System.out.println("Employee added to database");
 		}
-    	
-    	
-    	sc.close();
     }   
     
     private void modifyEmployee(String name, String loginID, String password) {
@@ -416,8 +406,6 @@ public class Terminal {
     		database.modifyEmployee(name, loginID, password, newPass1, newName);
     	}
     	else System.out.println("Employee not found");
-    	sc.close();
-    	
     }
     
     private void deleteEmployee() {
@@ -435,59 +423,13 @@ public class Terminal {
     	
     	database.deleteEmployee(name, loginID, password);
     	System.out.println("Employee deleted");
-    	
-    	sc.close();
-    	
     }
 
 	private void logout(){
     	this.employee= "";
 	}
-/*	
-	private String showAllOptions(ArrayList<String> options) {
-		String option = "-";
-		int step = 0;
-		boolean selected = true;
-
-		Scanner sc = new Scanner(System.in);
-		
-		while(!selected) {
-			for (int x = 0; x < 9 && step+x < options.size(); x++) {
-				System.out.println("  * "+x+": "+options.get(step+x));
-			}
-
-			System.out.println("a: Avanzar");
-
-			if (step != 0) System.out.println("r: Retroceder");
-			
-			option = sc.next();
-			
-			switch(option) {
-			case "a":
-				step = step+9;
-				break;
-			case "r":
-				step = step-9;
-			case "1":
-			case "2":
-			case "3":
-			case "4":
-			case "5":
-			case "6":
-			case "7":
-			case "8":
-			case "9":
-				option
-
-			}
-			
-			System.out.print("Select an option: ");
-			
-		}
-		
-		sc.close();
-		
-		return option;
+	
+	public Terminal(Database dt) {
+		this.database = dt;
 	}
-	*/
 }

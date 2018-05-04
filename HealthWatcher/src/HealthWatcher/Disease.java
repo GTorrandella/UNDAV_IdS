@@ -19,4 +19,8 @@ public class Disease {
 				"\nSymtoms: " + symtoms +
 				"\nDuration (in days): "+ duration);
 	}
+	
+	public String getName() {
+		return name;
+	}
 }

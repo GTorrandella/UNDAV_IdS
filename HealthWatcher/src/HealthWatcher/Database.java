@@ -8,11 +8,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class Database {
-    private LinkedList<Complaint> complaints;
-    private HashMap<String,Employee> pass;
-    private HashMap<String,HealthUnit> healthUnits;
-    private HashMap<String,Disease> diseasies;
+    private LinkedList<Complaint> complaints = new LinkedList<Complaint>();
+    private HashMap<String,Employee> pass = new HashMap<String,Employee>();
+    private HashMap<String,HealthUnit> healthUnits = new HashMap<String,HealthUnit>();
+    private HashMap<String,Disease> diseasies = new HashMap<String,Disease>();
 
+    public void addDisease(Disease d) {
+    	diseasies.put(d.getName(), d);
+    }
+    
     public void addComplaint(Complaint complaint) {
         complaints.add(complaint);
     }
