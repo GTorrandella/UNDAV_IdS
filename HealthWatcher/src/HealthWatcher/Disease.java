@@ -1,12 +1,12 @@
 package HealthWatcher;
 
-public class Desease {
+public class Disease {
 	private String name;
 	private String description;
 	private String symtoms;
 	private int duration;		//en dias
 	
-	public Desease(String name, String des, String sym, int dur) {
+	public Disease(String name, String des, String sym, int dur) {
 		this.name = name;
 		this.description = des;
 		this.symtoms = sym;
