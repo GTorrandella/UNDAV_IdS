@@ -233,10 +233,37 @@ public class Terminal {
     }
     
     private void diseaseInformationQuery() {
+    	System.out.print("Enter the disease to querry: ");
+    	Scanner sc = new Scanner(System.in);
     	
+    	Disease diseaseLooked = database.searchDiesaseByName(sc.next());
+    	
+    	System.out.println();
+    	
+    	if(diseaseLooked != null) {
+    		diseaseLooked.showDesease();
+    	}
+    	
+    	else System.out.print("Disease not found");
+    	
+    	sc.close();
     }
     
     private void complaintInformationQuery() {
+    	System.out.print("Enter the complaint ID number: ");
+    	Scanner sc = new Scanner(System.in);
+    	
+    	Complaint complaintLooked = database.searchComplaint(sc.next());
+    	
+    	System.out.println();
+    	
+    	if(complaintLooked != null) {
+    		complaintLooked.showComplaint();;
+    	}
+    	
+    	else System.out.print("Complaint not found");
+    	
+    	sc.close();
     	
     }
     

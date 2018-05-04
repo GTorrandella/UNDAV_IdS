@@ -64,5 +64,10 @@ public abstract class Complaint {
 		RegistrationDate = registrationDate;
 	}
 	
+	public void showComplaint() {
+			System.out.println( "\nComplaint ID: " + ComplaintID +
+						"\nDescription: " + Description +
+						"\nState: " + state.toString());
+	}
 	
 }
