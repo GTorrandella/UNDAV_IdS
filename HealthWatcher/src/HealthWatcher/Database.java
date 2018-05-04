@@ -16,25 +16,25 @@ public class Database {
         complaints.add(complaint);
     }
     
-    public boolean verifyEmployee(String name, String surname, String password) {
-    	return pass.containsKey(name+password+surname);
+    public boolean verifyEmployee(String name, String loginID, String password) {
+    	return pass.containsKey(name+password+loginID);
     }
     
-    public void addEmployee(String name, String surname, String password) {
-    	pass.put(name+password+surname, new Employee(pass.size()+1, name, surname));
+    public void addEmployee(String name, String loginID, String password) {
+    	pass.put(name+password+loginID, new Employee(pass.size()+1, name, loginID));
     }
     
-    public void deleteEmployee(String name, String surname, String password) {
-    	pass.remove(name+password+surname);
+    public void deleteEmployee(String name, String loginID, String password) {
+    	pass.remove(name+password+loginID);
     }
     
-    public Employee returnEmployee(String name, String surname, String password) {
-    	return pass.get(name+password+surname);
+    public Employee returnEmployee(String name, String loginID, String password) {
+    	return pass.get(name+password+loginID);
     }
     
-    public void modifyEmployeePassword(String name, String surname, String password, String newPassword) {
-    	pass.put(name+newPassword+surname, pass.get(name+password+surname));
-    	pass.remove(name+password+surname);
+    public void modifyEmployeePassword(String name, String loginID, String password, String newPassword) {
+    	pass.put(name+newPassword+loginID, pass.get(name+password+loginID));
+    	pass.remove(name+password+loginID);
     }
     
     public void addHealthUnit(HealthUnit hu) {
