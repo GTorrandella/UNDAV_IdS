@@ -290,7 +290,7 @@ public class Terminal {
 				addEmployee();
 				break;
 			case 3:
-				modifyEmployee("damian", "damikapo", "dami123");
+				modifyEmployee("damian", "dami", "dami123");
 				break;
 			case 4:
 				deleteEmployee();
